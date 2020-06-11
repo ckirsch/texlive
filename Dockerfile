@@ -1,3 +1,6 @@
+# This is a full TexLive 2020 installation
+# without any attempts to optimize space
+
 FROM ubuntu:latest
 
 # At least wget and make are needed
