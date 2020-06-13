@@ -8,7 +8,7 @@ on:
 
 jobs:
   selfie-on-docker:
-    name: Build, test, and deploy texlive on docker
+    name: Build and deploy texlive on docker
     runs-on: ubuntu-latest
 
     steps:
@@ -16,10 +16,8 @@ jobs:
       uses: actions/checkout@v2
     - name: Build docker image
       run: docker build -t christophkirsch/texlive .
-    - name: Test texlive in docker image
-      run: docker run christophkirsch/texlive
     # requires secrets named DOCKERHUB_USERNAME and DOCKERHUB_PASSWORD in the github repository's Settings -> Secrets
     - name: Deploy docker image
       run: |
-        echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+        echo '${{ secrets.DOCKERHUB_PASSWORD }}' | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
         docker push christophkirsch/texlive
