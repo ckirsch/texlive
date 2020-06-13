@@ -1,9 +1,9 @@
 # This is a full TexLive 2020 installation
-# without any attempts to optimize space
+# except for documentation and sources
 
 FROM ubuntu:latest
 
-# At least wget and make are needed
+# At least wget is needed, make and git are optional
 
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends wget make git
@@ -23,7 +23,10 @@ RUN mv $(echo install-tl-*) install-tl-unx
 
 WORKDIR /opt/install-tl-unx
 
-# The TexLive profile is from an earlier interactive installation
+# The TexLive profile is from an earlier interactive installation with:
+
+# tlpdbopt_install_docfiles 0
+# tlpdbopt_install_srcfiles 0
 
 COPY texlive.profile .
 

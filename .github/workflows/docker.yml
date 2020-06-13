@@ -1,0 +1,23 @@
+name: Build Docker TexLive 2020
+
+on:
+  push:
+    branches: [ master ]
+    paths-ignore:
+    - '**.md'
+
+jobs:
+  selfie-on-docker:
+    name: Build, test, and deploy texlive on docker
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout texlive
+      uses: actions/checkout@v2
+    - name: Build docker image
+      run: docker build -t christophkirsch/texlive:2020 .
+    # requires secrets named DOCKERHUB_USERNAME and DOCKERHUB_PASSWORD in the github repository's Settings -> Secrets
+    - name: Deploy docker image
+      run: |
+        echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+        docker push christophkirsch/texlive:2020

@@ -1,10 +1,10 @@
 # Howto
 
-Either pull the image from docker (\~7GB):
+Either pull the image from docker (\~4GB):
 
 `docker pull christophkirsch/texlive:2020`
 
-Or else build it yourself (\~3hrs):
+Or else build it yourself (\~20min):
 
 `docker build --no-cache -t texlive .`
 
