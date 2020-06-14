@@ -2,7 +2,7 @@
 
 Either pull the image from docker (\~4GB):
 
-`docker pull christophkirsch/texlive:2020`
+`docker pull christophkirsch/texlive`
 
 Or else build it yourself (\~20min):
 
@@ -16,6 +16,6 @@ with support of all texlive commands as well as `make` and `git`.
 
 You may also push it to docker using your username:
 
-`docker tag texlive christophkirsch/texlive:2020`
+`docker tag texlive christophkirsch/texlive`
 
 `docker push christophkirsch/texlive`
